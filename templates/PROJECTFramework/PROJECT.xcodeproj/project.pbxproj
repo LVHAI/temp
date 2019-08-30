@@ -15,8 +15,6 @@
 		1467C8EE204F6CDD002947D8 /* PROJECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1467C8E4204F6CDD002947D8 /* PROJECT.framework */; };
 		1467C8F3204F6CDD002947D8 /* PROJECTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1467C8F2204F6CDD002947D8 /* PROJECTTests.m */; };
 		1467C8F5204F6CDD002947D8 /* PROJECT.h in Headers */ = {isa = PBXBuildFile; fileRef = 1467C8E7204F6CDD002947D8 /* PROJECT.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1467C90D204F7033002947D8 /* PROJECTActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1467C90B204F7033002947D8 /* PROJECTActivator.h */; };
-		1467C90E204F7033002947D8 /* PROJECTActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1467C90C204F7033002947D8 /* PROJECTActivator.m */; };
 		14AC0BBF206B71DC004D53D3 /* PROJECTResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14AC0BB7206B71C8004D53D3 /* PROJECTResources.bundle */; };
 		14AC0BC1206B71F0004D53D3 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14AC0BC0206B71F0004D53D3 /* images.xcassets */; };
 		14AC0BC7206B7274004D53D3 /* UIView+PROJECTNib.h in Headers */ = {isa = PBXBuildFile; fileRef = 14AC0BC3206B7274004D53D3 /* UIView+PROJECTNib.h */; };
@@ -57,8 +55,6 @@
 		1467C8F2204F6CDD002947D8 /* PROJECTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PROJECTTests.m; sourceTree = "<group>"; };
 		1467C8F4204F6CDD002947D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1467C902204F6F45002947D8 /* manifest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = manifest.xml; sourceTree = "<group>"; };
-		1467C90B204F7033002947D8 /* PROJECTActivator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROJECTActivator.h; sourceTree = "<group>"; };
-		1467C90C204F7033002947D8 /* PROJECTActivator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROJECTActivator.m; sourceTree = "<group>"; };
 		1467C910204F7915002947D8 /* copy_manifest_to_proj.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_manifest_to_proj.sh; sourceTree = "<group>"; };
 		1467C911204F7915002947D8 /* make_pod_bundle.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make_pod_bundle.sh; sourceTree = "<group>"; };
 		1467C912204F7915002947D8 /* lint_source.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lint_source.sh; sourceTree = "<group>"; };
@@ -169,7 +165,6 @@
 			children = (
 				14AC0BC2206B7274004D53D3 /* Utils */,
 				140D87B22060B0630063082F /* UI */,
-				1467C90A204F7033002947D8 /* CSAIR */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -180,15 +175,6 @@
 				1467C902204F6F45002947D8 /* manifest.xml */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		1467C90A204F7033002947D8 /* CSAIR */ = {
-			isa = PBXGroup;
-			children = (
-				1467C90B204F7033002947D8 /* PROJECTActivator.h */,
-				1467C90C204F7033002947D8 /* PROJECTActivator.m */,
-			);
-			path = CSAIR;
 			sourceTree = "<group>";
 		};
 		1467C90F204F7915002947D8 /* shell */ = {
@@ -248,7 +234,6 @@
 			files = (
 				14AC0BC8206B7274004D53D3 /* PROJECTBundle.h in Headers */,
 				14AC0BC7206B7274004D53D3 /* UIView+PROJECTNib.h in Headers */,
-				1467C90D204F7033002947D8 /* PROJECTActivator.h in Headers */,
 				140D87B82060B0630063082F /* CPDViewController.h in Headers */,
 				140D87B92060B0630063082F /* CPDNextViewController.h in Headers */,
 				14AC0BD2206B8945004D53D3 /* PROJECTImage.h in Headers */,
@@ -419,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				14AC0BCA206B7274004D53D3 /* UIView+PROJECTNib.m in Sources */,
-				1467C90E204F7033002947D8 /* PROJECTActivator.m in Sources */,
 				140D87BA2060B0630063082F /* CPDViewController.m in Sources */,
 				140D87B72060B0630063082F /* CPDNextViewController.m in Sources */,
 				14AC0BC9206B7274004D53D3 /* PROJECTBundle.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "CPDNextViewController.h"
-#import <CSAIR/CSAIR-Headers.h>
 
 @interface CPDNextViewController ()
 @property (nonatomic) NSInteger page;
@@ -33,19 +32,9 @@
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 50)];
     [btn setTitle:@"点击下一页" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
-}
-
--(void)next {
-    
-    [CSAIR openURL:[NSString stringWithFormat:@"PROJECT://next/page/%ld", _page+1]];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

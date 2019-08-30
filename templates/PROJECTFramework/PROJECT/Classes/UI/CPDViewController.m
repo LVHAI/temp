@@ -7,7 +7,6 @@
 //
 
 #import "CPDViewController.h"
-#import <CSAIR/CSAIR-Headers.h>
 
 @interface CPDViewController ()
 
@@ -18,19 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.title = @"首页";
-    
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 50)];
-    [btn setTitle:@"点击下一页" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-}
-
--(void)next {
-    [CSAIR openURL:@"PROJECT://next/page/1"];
 }
 
 - (void)didReceiveMemoryWarning
