@@ -1,6 +1,9 @@
-use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@gitlab.com:cnstar/ZCMRepos.git'
 
 platform :ios, '8.0'
+inhibit_all_warnings!
+#use_frameworks!
 
 target '${POD_NAME}_Example' do
   pod '${POD_NAME}', :path => '../'
