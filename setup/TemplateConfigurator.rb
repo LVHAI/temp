@@ -70,22 +70,24 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      platform = self.ask_with_answers("What platform do you want to use?", ["iOS", "macOS"]).to_sym
+#      platform = self.ask_with_answers("What platform do you want to use?", ["iOS", "macOS"]).to_sym
+#
+#      case platform
+#        when :macos
+#          ConfigureMacOSSwift.perform(configurator: self)
+#        when :ios
+#          framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
+#          case framework
+#            when :swift
+#              ConfigureSwift.perform(configurator: self)
+#
+#            when :objc
+#              ConfigureIOS.perform(configurator: self)
+#          end
+#      end
 
-      case platform
-        when :macos
-          ConfigureMacOSSwift.perform(configurator: self)
-        when :ios
-          framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
-          case framework
-            when :swift
-              ConfigureSwift.perform(configurator: self)
-
-            when :objc
-              ConfigureIOS.perform(configurator: self)
-          end
-      end
-
+      ConfigureIOS.perform(configurator: self)
+      
       replace_variables_in_files
       clean_template_files
       rename_template_files
@@ -101,23 +103,26 @@ module Pod
 
     #----------------------------------------#
 
-    def ensure_carthage_compatibility
-      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Pods.xcodeproj')
-    end
+#    def ensure_carthage_compatibility
+#      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Pods.xcodeproj')
+#    end
 
     def run_pod_install
       puts "\nRunning " + "pod install".magenta + " on your new library."
       puts ""
 
       Dir.chdir("Example") do
-        system "pod install"
+          system "#{pod_name}_SOURCE=1 #{pod_name}_MANIFEST=1 pod install"
       end
-      Dir.chdir("./") do
-          system "pod install"
-      end
-
-      `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
-      `git commit -m "Initial commit"`
+#      Dir.chdir("Example") do
+#        system "pod install"
+#      end
+#      Dir.chdir("./") do
+#          system "pod install"
+#      end
+#
+#      `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
+#      `git commit -m "Initial commit"`
     end
 
     def clean_template_files
@@ -149,18 +154,18 @@ module Pod
       podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
       end.join("\n    ")
-      puts podfile_content + "--------"
+#      puts podfile_content + "--------"
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
       
-      podfile = File.read podfile_path_main
-      podfile_content = @pods_for_podfile.map do |pod|
-          "pod '" + pod + "'"
-      end.join("\n    ")
-      
-      puts podfile_content + "==========="
-      podfile.gsub!("${INCLUDED_PODS}", podfile_content)
-      File.open(podfile_path, "w") { |file| file.puts podfile }
+#      podfile = File.read podfile_path_main
+#      podfile_content = @pods_for_podfile.map do |pod|
+#          "pod '" + pod + "'"
+#      end.join("\n    ")
+#
+#      puts podfile_content + "==========="
+#      podfile.gsub!("${INCLUDED_PODS}", podfile_content)
+#      File.open(podfile_path, "w") { |file| file.puts podfile }
     end
 
     def add_line_to_pch line
@@ -191,7 +196,7 @@ module Pod
     end
 
     def rename_classes_folder
-      FileUtils.mv "Pod", @pod_name
+#      FileUtils.mv "Pod", @pod_name
     end
 
     def reinitialize_git_repo
@@ -230,9 +235,6 @@ module Pod
 
     def podfile_path
       'Example/Podfile'
-    end
-    def podfile_path_main
-        './Podfile'
     end
 
     #----------------------------------------#

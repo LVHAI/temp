@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="PROJECT" activator="PROJECTActivator" host="https://www.baidu.com" version="1.0.0" date="TODAYS_DATE">
+    <config name="main" class="CPDViewController" mode="share" />
+    <config name="next" class="CPDNextViewController" mode="create">
+        <constructors>
+            <pattern path="page/(initWithPage:)" />
+        </constructors>
+    </config>
+    <!--
+    <config name="food" class="FoodViewController" mode="create" present="push" >
+        构造方法定义
+        <constructors>
+            <pattern path="foo/(initWithFood:)" present="push" />
+            <pattern path="apple/(initWithFood:)" />
+        </constructors>
+        public公开的方法定义
+        <methods>
+            <pattern path="set/(setFood:)" />
+            <pattern path="recv" />
+            <pattern path="run" type="class" />
+        </methods>
+    </config>
+     -->
+</bundle>
+
+<!-- URL 格式定义:  scheme://classIdentifier/初始化方法/必要的参数？可选的参数#方法名/必要的参数。。 -->
+<!--
+ <bundle/> 属性解释：
+ - name: 插件(组件)名称，当注册到主工程时的名称必须与此名称一致。也即为 `URL` 中的 `scheme`
+ - activator: 为实现了 `AIRActivator` 协议的类
+ 
+ <config/>: 每一个 config 的定义代表了一个可以通过 `[CSAIR openURL:]` 调用的类。
+    属性解释：
+ - name: 类的标识，对应于 URL 的 `classIdentifier`. 其指向的类被`class` 属性定义
+ - class: 指向的具体的类名
+ - mode: 类的创建模式，1. `create`(每次都返回一个新创建的对象) ， 2. `share`(创建一个对象，并且缓存下来以备重用)， 未定义的话默认为 `create` 模式
+ - present: 当 `class` 为一个 UIViewController 时才生效。此属性指定了 Controller 展示的模式。 `push` ，`modal` ，`pop` ，`ext`(打开第三方APP) ， `custom`(自定义，暂未实现)。 未定义的话默认为`push`模式
+ 
+ <constructors/>: 类的构造方法定义
+ <methods/>: 类或实例方法定义
+ - pattern: URL 的匹配规则
+ -- path: 格式为： methodIdentifier[/(param1:)][/(param2:)]，其中`[]`内是可选择性。
+ -- present: 当为`<constructors/>`的方法时，可选定义此属性，跟 `<config/>`中的`present`属性定义一致，如果未定义，默认取`<config/>`中的`present`
+ -- type: 当值为 `class` 时，那么此处定义的方法为类方法，否则为实例方法。此属性在 `<methods/>` 下有效
+ -->

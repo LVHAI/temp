@@ -1,0 +1,26 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@gitlab.com:cnstar/ZCMRepos.git'
+
+platform :ios, '8.0'
+inhibit_all_warnings!
+#use_frameworks!
+
+project '${POD_NAME}.xcodeproj'
+
+def share_pod
+    pod 'CSAIR'
+end
+
+target '${POD_NAME}' do
+    share_pod
+end
+
+target '${POD_NAME}Tests' do
+    share_pod
+end
+
+post_install do |installer|
+    copy_pods_resources_path = "Pods/Target Support Files/Pods-${POD_NAME}/Pods-${POD_NAME}-resources.sh"
+    File.open(copy_pods_resources_path, "w") {|file| file.puts '' }
+end
+
