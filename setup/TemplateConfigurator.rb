@@ -112,9 +112,9 @@ module Pod
       Dir.chdir("Example") do
         system "pod install"
       end
-#      Dir.chdir("./") do
-#          system "pod install"
-#      end
+      Dir.chdir("./") do
+          system "pod install"
+      end
 
       `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
       `git commit -m "Initial commit"`
@@ -229,7 +229,7 @@ module Pod
       'Example/Podfile'
     end
     def podfile_path_main
-        'Podfile'
+        './Podfile'
     end
 
     #----------------------------------------#
