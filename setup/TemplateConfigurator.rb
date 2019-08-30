@@ -157,15 +157,7 @@ module Pod
 #      puts podfile_content + "--------"
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
-      
-#      podfile = File.read podfile_path_main
-#      podfile_content = @pods_for_podfile.map do |pod|
-#          "pod '" + pod + "'"
-#      end.join("\n    ")
-#
-#      puts podfile_content + "==========="
-#      podfile.gsub!("${INCLUDED_PODS}", podfile_content)
-#      File.open(podfile_path, "w") { |file| file.puts podfile }
+
     end
 
     def add_line_to_pch line
