@@ -67,7 +67,6 @@ module Pod
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
         :xcodeproj_path => "templates/ios/Example/PROJECT.xcodeproj",
-        :xcodeproj_path_main => "templates/iOS_main/PROJECT.xcodeproj",
         :platform => :ios,
         :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
@@ -78,7 +77,6 @@ module Pod
       `touch Pod/Classes/ReplaceMe.m`
 
       `mv ./templates/ios/* ./`
-      `mv ./templates/iOS_main/* ./`
 
       # remove podspec for osx
       `rm ./NAME-osx.podspec`
