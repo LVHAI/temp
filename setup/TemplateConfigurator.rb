@@ -126,13 +126,13 @@ module Pod
     end
 
     def clean_template_files
-      ["./**/.gitkeep", "configure", "_CONFIGURE.rb", "README.md", "LICENSE", "templates", "setup", "CODE_OF_CONDUCT.md"].each do |asset|
-        `rm -rf #{asset}`
+        ["./**/.gitkeep", "configure", "_CONFIGURE.rb", "README.md", "LICENSE", "PROJECTFramework", "templates", "setup", "CODE_OF_CONDUCT.md"].each do |asset|
+            `rm -rf #{asset}`
       end
     end
 
     def replace_variables_in_files
-      file_names = ['POD_LICENSE', 'POD_README.md', 'NAME.podspec', '.travis.yml', podfile_path]
+      file_names = ['POD_LICENSE', 'POD_README.md', 'NAME.podspec', '.travis.yml', 'Podfile', podfile_path]
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -204,13 +204,14 @@ module Pod
     #----------------------------------------#
 
     def user_name
-      (ENV['GIT_COMMITTER_NAME'] || github_user_name || `git config user.name` || `<GITHUB_USERNAME>` ).strip
+        user_name = (ENV['GIT_COMMITTER_NAME'] || gitlab_user_name || `git config user.name` || `<GITLAB_USERNAME>` || `whoami` ).strip
+        return user_name.empty? ? "cnstar" : user_name
     end
-
-    def github_user_name
-      github_user_name = `security find-internet-password -s github.com | grep acct | sed 's/"acct"<blob>="//g' | sed 's/"//g'`.strip
-      is_valid = github_user_name.empty? or github_user_name.include? '@'
-      return is_valid ? nil : github_user_name
+    
+    def gitlab_user_name
+        gitlab_user_name = `security find-internet-password -s gitlab.com | grep acct | sed 's/"acct"<blob>="//g' | sed 's/"//g'`.strip
+        is_valid = (( gitlab_user_name.empty? ) || ( gitlab_user_name.include? '@' ))
+        return is_valid ? nil : gitlab_user_name
     end
 
     def user_email
