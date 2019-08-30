@@ -8,7 +8,7 @@ inhibit_all_warnings!
 project '${POD_NAME}.xcodeproj'
 
 def share_pod
-    pod 'CSAIR'
+    #pod 'CSAIR'
 end
 
 target '${POD_NAME}' do
